@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroGem | Advanced Machine Recommendation & Astrology Intelligence Engine</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <nav class="navbar relative z-50">
+        <div class="nav-container">
+            <a href="#" class="brand gold-text" onclick="switchPage('home')">
+                <i class="fa-solid fa-jedi mr-1"></i> ASTROGEM
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" onclick="switchPage('home')">Home</a></li>
+                <li><a href="#" onclick="switchPage('form')">Astrology Engine</a></li>
+                <li><a href="#" onclick="switchPage('catalog')">Gem Encyclopedia</a></li>
+                <li><a href="#" onclick="switchPage('compare')">Matrix Compare</a></li>
+                <li><a href="#" onclick="switchPage('dashboard')">User Telemetry</a></li>
+                <li><a href="#" onclick="switchPage('admin')">Admin Panel</a></li>
+                <li id="authNav"><a href="#" onclick="switchPage('login')"><i class="fa-solid fa-user-shield"></i> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 relative z-10">
+
+        <section id="page-home" class="page-section active">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
+                <div class="text-left space-y-6">
+                    <span class="px-4 py-1.5 bg-purple-950/50 border border-purple-500/30 text-purple-300 text-xs font-semibold rounded-full uppercase tracking-widest inline-block">Vedic Matrix Engine v4.0</span>
+                    <h1 class="text-5xl font-black leading-tight text-white">Advanced <span class="gold-text">Astrology Intelligence</span> & Mineral Alignment Simulator</h1>
+                    <p class="text-gray-300 text-base leading-relaxed">An industrial-grade full-stack simulation mapping planetary algorithms, weights matrices, and geological structures against real natal charts. Features strict malefic defense overrides and integrated AI chat assistance models.</p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button class="btn-primary px-8 py-3.5 rounded-xl text-sm" onclick="switchPage('form')">Compute My Natal Stone <i class="fa-solid fa-wand-magic-sparkles ml-2"></i></button>
+                        <button class="btn-secondary px-6 py-3.5 rounded-xl text-sm" onclick="switchPage('catalog')">Explore Catalog</button>
+                    </div>
+                </div>
+                <div class="hero-animation">
+                    <div class="rotating-zodiac-wheel"></div>
+                    <i class="fa-solid fa-gem floating-gem-avatar"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                <div class="feature-card">
+                    <i class="fa-solid fa-bezier-curve text-3xl text-amber-400 mb-4 block"></i>
+                    <h3 class="text-lg font-bold mb-2 text-white">Weighted Algorithmic Scoring</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Replaces single-sign matching with multi-layered computations evaluating Moon Sign, Ascendant, and focal goals simultaneously.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-id-card-clip text-3xl text-purple-400 mb-4 block"></i>
+                    <h3 class="text-lg font-bold mb-2 text-white">Synthetic Kundli Diagnostics</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Computes critical astrological outputs including calculated Sun Sign, Benefic/Malefic planetary tracks, and lucky metrics automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-brain text-3xl text-blue-400 mb-4 block"></i>
+                    <h3 class="text-lg font-bold mb-2 text-white">Gemini/OpenAI Assistant Node</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Incorporate contextual verification layers to safely validate chemical stone combinations against natal positions instantly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-login" class="page-section">
+            <div class="max-w-md mx-auto dynamic-card p-8">
+                <h2 class="text-2xl font-bold text-center gold-text mb-2" id="authTitle">Sign In to Your Cosmic Portal</h2>
+                <p class="text-center text-xs text-gray-400 mb-6">Secured via Express-JWT Validation Engine Architecture simulation rules</p>
+                <form id="authForm" onsubmit="handleAuth(event)">
+                    <div class="mb-4">
+                        <label class="block text-gray-300 text-xs mb-2 font-medium uppercase tracking-wider">Email Address</label>
+                        <input type="email" id="authEmail" class="form-input" required placeholder="developer@astrogem.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-300 text-xs mb-2 font-medium uppercase tracking-wider">Secure Access Password</label>
+                        <input type="password" id="authPassword" class="form-input" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-3 rounded-lg text-sm" id="authBtn">Verify Core Credentials</button>
+                </form>
+                <p class="text-center mt-4 text-xs text-gray-400">
+                    <span id="authToggleText">Don't have an active project account node?</span> 
+                    <a href="#" class="text-amber-400 underline ml-1" onclick="toggleAuthMode()">Toggle Registration Mode</a>
+                </p>
+            </div>
+        </section>
+
+        <section id="page-form" class="page-section">
+            <div class="max-w-4xl mx-auto dynamic-card p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-black gold-text mb-2"><i class="fa-solid fa-dharmachakra text-amber-400 mr-2"></i> Astrological Parameter Mapping</h2>
+                    <p class="text-xs text-gray-400">Inputs populate the dynamic calculation engine matrix arrays</p>
+                </div>
+                
+                <form id="recommendationForm" onsubmit="generateRecommendation(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label class="block text-gray-300 text-xs font-semibold uppercase mb-2">Date of Birth</label>
+                            <input type="date" id="dob" class="form-input" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 text-xs font-semibold uppercase mb-2">Time of Birth</label>
+                            <input type="time" id="tob" class="form-input" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 text-xs font-semibold uppercase mb-2">Place of Birth</label>
+                            <input type="text" id="pob" class="form-input" placeholder="e.g., California, USA" required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div>
+                            <label class="block text-gray-300 text-xs font-semibold uppercase mb-2">Moon Sign (Chandra Rashi)</label>
+                            <select id="moonSign" class="form-input">
+                                <option value="Aries"> Aries (Mesha)</option>
+                                <option value="Taurus"> Taurus (Vrishabha)</option>
+                                <option value="Gemini"> Gemini (Mithuna)</option>
+                                <option value="Cancer"> Cancer (Karka)</option>
+                                <option value="Leo"> Leo (Simha)</option>
+                                <option value="Virgo"> Virgo (Kanya)</option>
+                                <option value="Libra"> Libra (Tula)</option>
+                                <option value="Scorpio"> Scorpio (Vrishchika)</option>
+                                <option value="Sagittarius"> Sagittarius (Dhanu)</option>
+                                <option value="Capricorn"> Capricorn (Makara)</option>
+                                <option value="Aquarius"> Aquarius (Kumbha)</option>
+                                <option value="Pisces"> Pisces (Meena)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 text-xs font-semibold uppercase mb-2">Ascendant Vector (Lagna)</label>
+                            <select id="ascendant" class="form-input">
+                                <option value="Aries">Aries Rising</option>
+                                <option value="Taurus">Taurus Rising</option>
+                                <option value="Gemini">Gemini Rising</option>
+                                <option value="Cancer">Cancer Rising</option>
+                                <option value="Leo">Leo Rising</option>
+                                <option value="Virgo">Virgo Rising</option>
+                                <option value="Libra">Libra Rising</option>
+                                <option value="Scorpio">Scorpio Rising</option>
+                                <option value="Sagittarius">Sagittarius Rising</option>
+                                <option value="Capricorn">Capricorn Rising</option>
+                                <option value="Aquarius">Aquarius Rising</option>
+                                <option value="Pisces">Pisces Rising</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 text-xs font-semibold uppercase mb-2">Core Life Priority</label>
+                            <select id="focusGoal" class="form-input">
+                                <option value="Career Success">Executive Promotion & Career Track</option>
+                                <option value="Business Growth">Commercial Scale & Revenue Expansion</option>
+                                <option value="Marriage & Relationship">Interpersonal Stability & Marriage Harmony</option>
+                                <option value="Health & Wellness">Deep Physical Vitality & Cellular Recovery</option>
+                                <option value="Financial Prosperity">Asset Allocation & Financial Abundance</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-full py-4 text-sm font-bold rounded-xl uppercase tracking-wider">
+                        Execute Weighted Scoring Matrix Computation <i class="fa-solid fa-microchip ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="page-result" class="page-section">
+            <div class="flex justify-between items-center mb-6">
+                <button class="btn-secondary px-4 py-2 rounded-lg text-xs" onclick="switchPage('form')"><i class="fa-solid fa-angle-left mr-1"></i> Remap Inputs</button>
+                <button class="btn-primary px-5 py-2 rounded-lg text-xs" onclick="downloadPDFReport()"><i class="fa-solid fa-download mr-1"></i> Export High-Fidelity PDF Report</button>
+            </div>
+
+            <div id="pdf-report-content" class="space-y-6 bg-slate-950/20 p-4 rounded-2xl">
+                <div class="border-b border-amber-500/20 pb-4 flex justify-between items-center">
+                    <h2 class="text-sm font-bold tracking-widest text-gray-400 uppercase">AstroGem High-Fidelity Verification Data</h2>
+                    <span class="text-xs font-mono text-amber-500">SYSTEM ID: SECURE-2026-X</span>
+                </div>
+
+                <div class="dynamic-card p-6 border-l-4 border-amber-400">
+                    <h3 class="text-lg font-bold text-white mb-4"><i class="fa-solid fa-circle-nodes text-amber-400 mr-2"></i> Synthetic Kundli Diagnostic Matrix</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs">
+                        <div class="p-3 bg-black/40 rounded-xl"><span class="block text-gray-400 mb-1">SUN SIGN</span><span class="text-base font-bold text-white" id="resSunSign">-</span></div>
+                        <div class="p-3 bg-black/40 rounded-xl"><span class="block text-gray-400 mb-1">BENEFIC TRACK</span><span class="text-base font-bold text-green-400" id="resLuckyPlanet">-</span></div>
+                        <div class="p-3 bg-black/40 rounded-xl"><span class="block text-gray-400 mb-1">MALEFIC GUARD</span><span class="text-base font-bold text-red-400" id="resMaleficPlanet">-</span></div>
+                        <div class="p-3 bg-black/40 rounded-xl"><span class="block text-gray-400 mb-1">LUCKY NUMBER/COLOR</span><span class="text-base font-bold text-amber-400" id="resLuckyMetrics">-</span></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 dynamic-card p-6 relative overflow-hidden bg-gradient-to-br from-indigo-950/20 to-slate-900/40">
+                        <span class="absolute top-0 right-0 bg-amber-400 text-black font-extrabold px-3 py-1 text-xs rounded-bl-xl uppercase">Primary Match Match</span>
+                        <h2 class="text-3xl font-black text-white mb-1" id="resGemName">-</h2>
+                        <p class="text-amber-400 text-xs font-medium tracking-wide mb-4" id="resGemMeta">-</p>
+                        <h4 class="text-xs font-bold uppercase text-gray-400 mb-2">Calculated Mechanical Benefits:</h4>
+                        <p class="text-sm text-gray-300 mb-6 leading-relaxed" id="resGemBenefits"></p>
+                        <div class="grid grid-cols-2 gap-4 border-t border-white/5 pt-4 text-xs text-gray-400">
+                            <div><i class="fa-solid fa-hammer mr-1 text-amber-400"></i> Structural Metal: <span class="text-white" id="resGemMetalType">-</span></div>
+                            <div><i class="fa-solid fa-clock mr-1 text-amber-400"></i> Activation Hour: <span class="text-white" id="resGemTime">-</span></div>
+                        </div>
+                    </div>
+
+                    <div class="dynamic-card p-5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-gray-300 border-b border-white/5 pb-2 mb-3">Mathematical Engine Rankings</h3>
+                            <div class="space-y-3" id="topRecommendationsScoresList">
+                                </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-red-950/30 border border-red-500/20 rounded-xl text-xs">
+                            <span class="block font-bold text-red-400 mb-1"><i class="fa-solid fa-shield-halved"></i> Safety Precaution Vector</span>
+                            <p class="text-gray-400 leading-normal" id="resPrecautions">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dynamic-card p-6">
+                    <h3 class="text-lg font-bold text-white mb-4"><i class="fa-solid fa-gavel text-amber-400 mr-2"></i> Scientific Activation & Ritual Directives</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs" id="ritualGuideContent"></div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto dynamic-card p-6 mt-8 border border-purple-500/20">
+                <h3 class="text-lg font-bold text-white mb-1"><i class="fa-solid fa-robot text-purple-400 mr-2"></i> Real-Time AI Astrology Verification Node</h3>
+                <p class="text-xs text-gray-400 mb-4">Powered by adaptive context rules. Ask specific execution questions like: <em>"Can I safely combine Emerald structures with Ruby elements?"</em></p>
+                <div class="chat-window-box space-y-3 text-xs" id="chatLogs">
+                    <div class="text-purple-300"><strong>Assistant Node:</strong> Parameters initialized cleanly. Enter query arrays below.</div>
+                </div>
+                <div class="flex gap-2 mt-4">
+                    <input type="text" id="chatInput" class="form-input text-xs" placeholder="Type contextual query statement here...">
+                    <button class="btn-primary px-6 py-2 rounded-xl text-xs whitespace-nowrap" onclick="executeAiChat()">Query Assistant</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-catalog" class="page-section">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                <div>
+                    <h2 class="text-3xl font-black gold-text">Gemstone Structural Encyclopedia</h2>
+                    <p class="text-xs text-gray-400">Examine image logs, hardness ratings, and planetary configurations</p>
+                </div>
+                <div class="flex flex-wrap gap-2 w-full md:w-auto">
+                    <input type="text" id="searchCatalog" class="form-input text-xs max-w-xs" placeholder="Search mineral keys..." oninput="filterCatalog()">
+                    <select id="filterPlanet" class="form-input text-xs max-w-xs" onchange="filterCatalog()">
+                        <option value="All">All Planetary Spheres</option>
+                        <option value="Jupiter">Jupiter (Guru)</option>
+                        <option value="Saturn">Saturn (Shani)</option>
+                        <option value="Mercury">Mercury (Budh)</option>
+                        <option value="Sun">Sun (Surya)</option>
+                        <option value="Venus">Venus (Shukra)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalogGrid"></div>
+        </section>
+
+        <section id="page-details" class="page-section">
+            <button class="btn-secondary px-4 py-2 rounded-lg text-xs mb-6" onclick="switchPage('catalog')"><i class="fa-solid fa-arrow-left"></i> Return to Catalog</button>
+            <div id="detailsContent"></div>
+        </section>
+
+        <section id="page-compare" class="page-section">
+            <div class="dynamic-card p-6 mb-8 text-center max-w-2xl mx-auto">
+                <h2 class="text-2xl font-bold gold-text mb-2">Side-By-Side Structural Contrast Matrix</h2>
+                <p class="text-xs text-gray-400 mb-6">Juxtapose chemical compounds side-by-side to prevent system collision anomalies.</p>
+                <div class="flex items-center gap-3 justify-center">
+                    <select id="compareG1" class="form-input text-xs" onchange="executeComparison()"></select>
+                    <span class="text-amber-400 font-black text-xs">VS</span>
+                    <select id="compareG2" class="form-input text-xs" onchange="executeComparison()"></select>
+                </div>
+            </div>
+            <div class="overflow-x-auto wrapper-table dynamic-card p-4 mx-auto max-w-4xl" id="compareResultContainer"></div>
+        </section>
+
+        <section id="page-dashboard" class="page-section">
+            <h2 class="text-3xl font-black gold-text mb-6">Personal Telemetry Analytics Hub</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-center text-xs">
+                <div class="dynamic-card p-4 border border-white/5"><span class="block text-gray-400 uppercase mb-1">Global Profiles Active</span><span class="text-2xl font-black text-white" id="dashTotalUsers">1,204</span></div>
+                <div class="dynamic-card p-4 border border-white/5"><span class="block text-gray-400 uppercase mb-1">Algorithmic Passes Run</span><span class="text-2xl font-black text-amber-400" id="dashTotalRecs">48,912</span></div>
+                <div class="dynamic-card p-4 border border-white/5"><span class="block text-gray-400 uppercase mb-1">Dominant Target Goal</span><span class="text-2xl font-black text-purple-400">Financial Growth</span></div>
+                <div class="dynamic-card p-4 border border-white/5"><span class="block text-gray-400 uppercase mb-1">Peak Stone Assignment</span><span class="text-2xl font-black text-blue-400">Yellow Sapphire</span></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="dynamic-card p-5">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Calculated Recommendation Trend Levels (2026 Metrics)</h4>
+                    <canvas id="chartStones" class="max-h-64"></canvas>
+                </div>
+                <div class="dynamic-card p-5">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Zodiac Distribution Mix</h4>
+                    <canvas id="chartZodiac" class="max-h-64"></canvas>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="dynamic-card p-5">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Most Selected Life Focal Goals</h4>
+                    <canvas id="chartGoals" class="max-h-64"></canvas>
+                </div>
+                <div class="dynamic-card p-5">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">User Growth Timeline Analysis</h4>
+                    <canvas id="chartActivity" class="max-h-64"></canvas>
+                </div>
+            </div>
+
+            <div class="dynamic-card p-6 mt-8">
+                <h3 class="text-lg font-bold text-white mb-4">Historical Query Computation Log Logs</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-300">
+                        <thead>
+                            <tr class="border-b border-white/10 text-amber-400 uppercase font-mono">
+                                <th class="p-3">Timestamp Tracking</th>
+                                <th class="p-3">Target Zodiac</th>
+                                <th class="p-3">Focal Priority Node</th>
+                                <th class="p-3">Calculated Output Match</th>
+                                <th class="p-3 text-right">Confidence Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-admin" class="page-section">
+            <h2 class="text-3xl font-black text-red-400 mb-6"><i class="fa-solid fa-user-gear mr-2"></i> Console Control Operations Panel</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 dynamic-card p-6">
+                    <h3 class="text-base font-bold text-gray-200 mb-4 border-b border-white/5 pb-2">Active Framework User Matrix Log</h3>
+                    <div class="space-y-3" id="adminUserList"></div>
+                </div>
+                <div class="dynamic-card p-6">
+                    <h3 class="text-base font-bold text-gray-200 mb-4 border-b border-white/5 pb-2">Inject Custom Mineral Matrix Node</h3>
+                    <form id="adminAddGemForm" onsubmit="adminInjectGemstone(event)">
+                        <div class="space-y-3 text-xs">
+                            <input type="text" id="admName" class="form-input text-xs" placeholder="Gemstone Unique Name" required>
+                            <input type="text" id="admPlanet" class="form-input text-xs" placeholder="Ruling Planet Node" required>
+                            <input type="text" id="admZodiac" class="form-input text-xs" placeholder="Primary Zodiac Mapping" required>
+                            <input type="text" id="admColor" class="form-input text-xs" placeholder="Mineral Crystal Color Color" required>
+                            <textarea id="admBenefits" class="form-input text-xs h-20" placeholder="Provide Astro Benefit Statements..." required></textarea>
+                            <button type="submit" class="btn-primary w-full py-3 rounded-lg text-xs font-bold uppercase tracking-wider">Commit Matrix Row Entry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 py-8 border-t border-white/5 text-center text-xs text-gray-500 relative z-10 font-mono">
+        &copy; 2026 ASTROGEM ENGINE MATRIX HUB • FULL STACK ARCHITECTURE ARCHETYPE LOGS FUNCTIONAL.
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+/* ==========================================================================
+   AstroGem Core Premium Design System Hierarchy - Luxury Space Glassmorphism
+   ========================================================================== */
+
+:root {
+    --bg-space: linear-gradient(135deg, #090d16 0%, #0b0f19 50%, #131a2e 100%);
+    --card-glass: rgba(12, 18, 33, 0.55);
+    --border-glass: rgba(255, 255, 255, 0.06);
+    --border-glass-focus: rgba(251, 191, 36, 0.35);
+    
+    /* Luxury Branding Palettes */
+    --gold: #fbbf24;
+    --purple: #8b5cf6;
+    --blue: #3b82f6;
+    --text-main: #f3f4f6;
+
+    /* Distinct Cosmic Gem Layer Shading Metrics */
+    --glow-ruby: 0 0 30px rgba(239, 68, 68, 0.4);
+    --glow-emerald: 0 0 30px rgba(16, 185, 129, 0.4);
+    --glow-sapphire: 0 0 30px rgba(59, 130, 246, 0.4);
+    --glow-yellow: 0 0 30px rgba(251, 191, 36, 0.4);
+    --glow-diamond: 0 0 30px rgba(248, 250, 252, 0.35);
+}
+
+/* Base Body Framework */
+body {
+    background: var(--bg-space);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Cosmic Particle Generators */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 150px, rgba(139, 92, 246, 0.6), rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: spacePan 120s linear infinite;
+    opacity: 0.45;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes spacePan {
+    from { background-position: 0 0; }
+    to { background-position: 200px 400px; }
+}
+
+/* Glassmorphic Container Engine Class */
+.dynamic-card {
+    background: var(--card-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-glass);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+/* Interactive Floating Hero Elements */
+.hero-animation {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotating-zodiac-wheel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(251, 191, 36, 0.25);
+    border-radius: 50%;
+    animation: spinClockwise 45s linear infinite;
+}
+
+.floating-gem-avatar {
+    font-size: 4.5rem;
+    color: var(--gold);
+    filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));
+    animation: floatGem 4s ease-in-out infinite;
+    z-index: 5;
+}
+
+@keyframes spinClockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes floatGem {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.05); }
+}
+
+/* Feature Grid Content Formatting */
+.feature-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border-glass);
+    border-radius: 1.25rem;
+    padding: 2rem 1.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--border-glass-focus);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Typography Gradient Rules */
+.gold-text {
+    background: linear-gradient(90deg, #ffffff 0%, #fbbf24 60%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Framework Architecture */
+.navbar {
+    background: rgba(9, 13, 22, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+}
+
+.brand {
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--gold);
+}
+
+/* Input Fields & Structured Form UI */
+.form-input {
+    width: 100%;
+    background: rgba(5, 7, 12, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    padding: 0.85rem 1.2rem;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.form-input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.15);
+}
+
+select.form-input option {
+    background-color: #0c1221;
+    color: #fff;
+}
+
+/* Premium Button Variations */
+.btn-primary {
+    background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.35);
+    filter: brightness(1.1);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   Structural Catalog Image Elements & Dynamic Glow Binders
+   ========================================================================== */
+
+.gem-photo-frame {
+    width: 100%;
+    height: 180px;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Explicit Dynamic Dataset Hover Injectors */
+.catalog-item-wrapper {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-item-wrapper[data-gem-type="ruby"]:hover { border-color: #ef4444; box-shadow: var(--glow-ruby); }
+.catalog-item-wrapper[data-gem-type="emerald"]:hover { border-color: #10b981; box-shadow: var(--glow-emerald); }
+.catalog-item-wrapper[data-gem-type="blue_sapphire"]:hover { border-color: #3b82f6; box-shadow: var(--glow-sapphire); }
+.catalog-item-wrapper[data-gem-type="yellow_sapphire"]:hover { border-color: #fbbf24; box-shadow: var(--glow-yellow); }
+.catalog-item-wrapper[data-gem-type="diamond"]:hover { border-color: #f8fafc; box-shadow: var(--glow-diamond); }
+
+/* Chat Container Engine UI Layouts */
+.chat-window-box {
+    height: 320px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+/* Basic Single-Page Engine Switch Classes */
+.page-section {
+    display: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wrapper-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wrapper-table th, .wrapper-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
