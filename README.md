@@ -8,7 +8,7 @@
 
 **An industrial-grade full-stack simulation mapping planetary algorithms, Vedic astrology calculations, and gemstone recommendations against natal charts.**
 
-[Live Demo](#features) • [Quick Start](#getting-started) • [Documentation](#documentation) • [Contributing](#contributing)
+[Live Demo]([#features](https://yashika-32.github.io/AstroGem/)) • [Quick Start](#getting-started) • [Documentation](#documentation) • [Contributing](#contributing)
 
 </div>
 
