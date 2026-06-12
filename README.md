@@ -433,7 +433,7 @@ copies or substantial portions of the Software.
 ## 📞 Contact & Support
 
 - **GitHub Issues** - [Report bugs or request features](https://github.com/Yashika-32/AstroGem/issues)
-- **Email** - yashika@astrogem.com (fictional)
+- **Email** - yychauhan23@gmail.com
 - **Documentation** - See AI_USAGE.md for project development notes
 
 ---
